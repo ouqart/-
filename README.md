@@ -1,24 +1,23 @@
 <!doctype html>
 <html lang="ja">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#1e1b24"><title>AFTER THE ENCORE</title>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#eef7f6"><title>AFTER THE ENCORE</title>
 <style>
-:root{--bg:#1e1b24;--panel:#282430;--panel2:#322d3c;--ink:#ece7f0;--muted:#a398ab;--line:#3f374a;--accent:#8a72be;--accent-hover:#9d85d1;--green:#7ab893;--gold:#dca868;--red:#d8727d}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;line-height:1.55}button{font:inherit;cursor:pointer}button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+:root{--bg:#eef7f6;--panel:#ffffff;--panel2:#e3f2f0;--ink:#2d3748;--muted:#718096;--line:#d2e5e3;--accent:#4299e1;--accent-hover:#3182ce;--green:#48bb78;--gold:#ed8936;--red:#f56565}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;line-height:1.5}button{font:inherit;cursor:pointer}
 
 /* スタート画面 */
-#start-screen{position:fixed;top:0;left:0;width:100%;height:100%;background:#17141c;z-index:100;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:20px;text-align:center}
-.start-card{background:var(--panel);padding:40px 30px;border-radius:20px;border:1px solid var(--line);box-shadow:0 20px 40px rgba(0,0,0,0.4);max-width:380px;width:100%}
-.start-card h1{font-family:Georgia,serif;font-size:28px;color:var(--ink);margin:0 0 6px;font-weight:bold;letter-spacing:.05em}
-.start-card p{color:var(--muted);font-size:12px;margin-bottom:28px;letter-spacing:.03em}
-.input-group{margin-bottom:24px;text-align:left}
-.input-group label{display:block;font-size:11px;font-weight:bold;color:var(--muted);margin-bottom:8px}
-.input-group input{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:10px;font-size:14px;outline:none;color:var(--ink);background:#1e1b24}
+#start-screen{position:fixed;top:0;left:0;width:100%;height:100%;background:linear-gradient(135deg,#eef7f6,#d8ecea);z-index:100;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:20px}
+.start-card{background:var(--panel);padding:35px 25px;border-radius:20px;border:1px solid var(--line);box-shadow:0 10px 25px rgba(66,153,225,0.08);max-width:360px;width:100%;text-align:center}
+.start-card h1{font-size:26px;color:var(--ink);margin:0 0 20px;font-weight:800;letter-spacing:.05em}
+.input-group{margin-bottom:20px;text-align:left}
+.input-group label{display:block;font-size:12px;font-weight:bold;color:var(--muted);margin-bottom:6px}
+.input-group input{width:100%;padding:12px 14px;border:2px solid var(--line);border-radius:12px;font-size:15px;outline:none;color:var(--ink);background:#fff}
 .input-group input:focus{border-color:var(--accent)}
-.start-btn{width:100%;padding:13px;border:none;background:var(--accent);color:white;border-radius:10px;font-size:14px;font-weight:bold;letter-spacing:.1em;transition:.2s}
+.start-btn{width:100%;padding:14px;border:none;background:var(--accent);color:white;border-radius:12px;font-size:15px;font-weight:bold;letter-spacing:.1em;transition:.2s}
 .start-btn:hover{background:var(--accent-hover)}
 
-.app{max-width:1100px;margin:auto;min-height:100dvh;display:grid;grid-template-columns:230px 1fr}.sidebar{border-right:1px solid var(--line);padding:26px 16px;display:flex;flex-direction:column;gap:24px;background:#191620}.brand{padding:0 10px}.brand strong{display:block;font-family:Georgia,serif;font-size:22px;letter-spacing:.03em;font-weight:bold;color:var(--ink)}.brand span{font-size:11px;color:var(--muted)}.profile{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px}.avatar{width:38px;height:38px;border-radius:50%;background:var(--panel2);border:1px solid var(--line);display:grid;place-items:center;font-size:16px;margin-bottom:9px;color:var(--accent)}.profile strong{display:block;font-size:14px;color:var(--ink)}.profile small{color:var(--muted);font-size:11px}.nav{display:grid;gap:5px}.nav button{border:0;background:transparent;color:var(--muted);text-align:left;padding:11px 12px;border-radius:10px;font-size:13px;font-weight:bold}.nav button.active,.nav button:hover{background:var(--panel2);color:var(--ink)}.nav button b{display:inline-block;width:25px;font-weight:normal}.side-note{margin-top:auto;color:var(--muted);font-size:11px;padding:12px;background:var(--panel);border-radius:10px;border:1px solid var(--line)}.main{min-width:0;padding:28px clamp(16px,4vw,42px) 40px}.topline{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:25px}.date{font-size:12px;color:var(--muted)}h1{font-size:clamp(24px,4vw,32px);font-weight:700;letter-spacing:-.02em;line-height:1.2;margin:0 0 6px;color:var(--ink)}.sub{color:var(--muted);font-size:13px;margin:0}.balance{border:1px solid var(--line);border-radius:12px;padding:9px 15px;text-align:right;white-space:nowrap;background:var(--panel)}.balance small{display:block;color:var(--muted);font-size:10px;font-weight:bold}.balance strong{font-size:18px;color:var(--accent);font-variant-numeric:tabular-nums}.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:22px 0}.stat{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:13px}.stat label{display:block;color:var(--muted);font-size:11px;margin-bottom:6px;font-weight:bold}.stat strong{font-size:20px;font-weight:700;color:var(--ink)}.stat small{font-size:10px;color:var(--muted);display:block;margin-top:3px}.layout{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(240px,.8fr);gap:16px}.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px;margin-bottom:15px;min-width:0}.card-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:13px}.card h2{font-size:14px;font-weight:700;margin:0;color:var(--ink)}.tag{font-size:10px;background:var(--panel2);color:var(--accent);padding:3px 8px;border-radius:6px;border:1px solid var(--line);white-space:nowrap;font-weight:bold}.story{background:var(--panel2);border-color:var(--line)}.story .scene{color:var(--accent);font-size:10px;letter-spacing:.1em;font-weight:bold;margin-bottom:8px}.story h2{font-size:18px;margin-bottom:8px;color:var(--ink)}.story p{font-size:13px;color:var(--muted);margin:0 0 15px}.actions{display:grid;gap:8px}.action{display:flex;align-items:center;gap:12px;text-align:left;background:var(--panel);border:1px solid var(--line);border-radius:10px;color:var(--ink);padding:12px;width:100%;transition:.15s}.action:hover{border-color:var(--accent);background:var(--panel2)}.action .symbol{width:34px;height:34px;flex:none;border-radius:8px;background:var(--panel2);display:grid;place-items:center;color:var(--accent);font-size:16px}.action .copy{flex:1;min-width:0}.action strong{display:block;font-size:13px;font-weight:700;color:var(--ink)}.action small{display:block;font-size:11px;color:var(--muted);margin-top:2px}.action .gain{font-size:11px;color:var(--green);font-weight:bold;white-space:nowrap}.action .gain.bad{color:var(--red)}.feed{display:grid;gap:13px}.event{display:grid;grid-template-columns:30px 1fr;gap:10px}.event .dot{width:28px;height:28px;border-radius:8px;background:var(--panel2);display:grid;place-items:center;color:var(--accent);font-size:13px;font-weight:bold}.event strong{font-size:12px;display:block;color:var(--ink)}.event p{font-size:11px;color:var(--muted);margin:2px 0 0}.barrow{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin:12px 0 5px;font-weight:bold}.bar{height:6px;background:var(--panel2);border-radius:10px;overflow:hidden}.bar i{display:block;height:100%;background:var(--accent);border-radius:10px;transition:width .25s}.bar.green i{background:var(--green)}.bar.gold i{background:var(--gold)}.section{display:none}.section.active{display:block}.choice-list{display:grid;gap:9px}.choice{padding:14px;border-radius:10px;border:1px solid var(--line);background:var(--panel)}.choice p{font-size:12px;color:var(--muted);margin:5px 0 11px}.choice strong{font-size:13px;color:var(--ink)}.btn{border:none;background:var(--accent);color:white;border-radius:8px;padding:9px 14px;font-size:12px;font-weight:bold}.btn:hover{background:var(--accent-hover)}.btn.secondary{background:transparent;border:1px solid var(--line);color:var(--muted)}.btn:disabled{opacity:.4;cursor:not-allowed}.chips{display:flex;flex-wrap:wrap;gap:7px}.chip{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:4px 8px;color:var(--muted);font-size:11px}.log{display:grid;gap:0}.log-item{padding:12px 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:70px 1fr;gap:12px}.log-item:last-child{border-bottom:0}.log-item time{color:var(--accent);font-size:10px;font-weight:bold}.log-item p{margin:0;font-size:12px;color:var(--ink)}.empty{font-size:12px;color:var(--muted)}.toast{position:fixed;bottom:20px;left:50%;transform:translate(-50%,20px);background:#2d2836;color:var(--ink);border:1px solid var(--line);padding:10px 18px;border-radius:10px;font-size:12px;font-weight:bold;opacity:0;pointer-events:none;transition:.2s;box-shadow:0 10px 30px rgba(0,0,0,0.5);max-width:90vw;z-index:5}.toast.show{opacity:1;transform:translate(-50%,0)}.footer-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.mobile-nav{display:none}.fine{color:var(--muted);font-size:10px;margin-top:12px}
-@media(max-width:760px){.app{display:block;padding-bottom:74px}.sidebar{display:none}.main{padding:19px 14px 28px}.topline{margin-bottom:19px}.stats{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:17px 0}.stat{padding:11px}.stat strong{font-size:19px}.layout{grid-template-columns:1fr;gap:0}.card{padding:15px}.right-col{display:grid;grid-template-columns:1fr}.mobile-nav{display:grid;position:fixed;z-index:4;bottom:0;left:0;right:0;grid-template-columns:repeat(4,1fr);background:rgba(30,27,36,0.95);border-top:1px solid var(--line);padding:7px 5px calc(7px + env(safe-area-inset-bottom));backdrop-filter:blur(16px)}.mobile-nav button{border:0;background:transparent;color:var(--muted);font-size:10px;padding:5px 0;display:grid;gap:2px;justify-items:center;font-weight:bold}.mobile-nav button span{font-size:17px}.mobile-nav button.active{color:var(--accent)}.balance{padding:7px 9px}.balance strong{font-size:15px}.date{font-size:10px}.action{padding:11px}.story h2{font-size:17px}}
+.app{max-width:1000px;margin:auto;min-height:100dvh;display:grid;grid-template-columns:220px 1fr}.sidebar{border-right:1px solid var(--line);padding:24px 16px;display:flex;flex-direction:column;gap:20px;background:#f5faf9}.brand{font-size:18px;font-weight:800;color:var(--ink);padding:0 6px}.profile{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:12px}.profile strong{display:block;font-size:14px;color:var(--ink)}.profile small{color:var(--muted);font-size:11px}.nav{display:grid;gap:6px}.nav button{border:0;background:transparent;color:var(--muted);text-align:left;padding:10px 12px;border-radius:10px;font-size:13px;font-weight:bold}.nav button.active,.nav button:hover{background:var(--panel2);color:var(--ink)}.side-note{margin-top:auto;color:var(--muted);font-size:11px;padding:10px;background:var(--panel);border-radius:10px;border:1px solid var(--line)}.main{min-width:0;padding:24px clamp(14px,3vw,32px) 36px}.topline{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:20px}h1{font-size:24px;font-weight:800;margin:0;color:var(--ink)}.balance{border:2px solid var(--line);border-radius:12px;padding:8px 14px;text-align:right;background:var(--panel)}.balance small{display:block;color:var(--muted);font-size:10px;font-weight:bold}.balance strong{font-size:17px;color:var(--accent)}.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:18px 0}.stat{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px}.stat label{display:block;color:var(--muted);font-size:11px;margin-bottom:4px;font-weight:bold}.stat strong{font-size:18px;font-weight:800;color:var(--ink)}.stat small{font-size:10px;color:var(--muted);display:block;margin-top:2px}.layout{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(220px,.8fr);gap:16px}.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:16px;margin-bottom:14px;min-width:0}.card-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.card h2{font-size:14px;font-weight:700;margin:0;color:var(--ink)}.story{background:var(--panel2);border-color:var(--line)}.story .scene{color:var(--accent);font-size:10px;font-weight:bold;margin-bottom:6px}.story h2{font-size:17px;margin-bottom:6px;color:var(--ink)}.story p{font-size:13px;color:var(--muted);margin:0 0 12px}.actions{display:grid;gap:8px}.action{display:flex;align-items:center;gap:12px;text-align:left;background:var(--panel);border:1.5px solid var(--line);border-radius:12px;color:var(--ink);padding:12px;width:100%;transition:.15s}.action:hover{border-color:var(--accent);background:#f0f8ff}.action .symbol{width:32px;height:32px;flex:none;border-radius:8px;background:var(--panel2);display:grid;place-items:center;color:var(--accent);font-size:15px}.action .copy{flex:1;min-width:0}.action strong{display:block;font-size:13px;font-weight:700;color:var(--ink)}.action small{display:block;font-size:11px;color:var(--muted);margin-top:12px}.action .gain{font-size:11px;color:var(--green);font-weight:bold;white-space:nowrap}.feed{display:grid;gap:10px}.event{display:grid;grid-template-columns:26px 1fr;gap:8px}.event .dot{width:26px;height:26px;border-radius:6px;background:var(--panel2);display:grid;place-items:center;color:var(--accent);font-size:12px;font-weight:bold}.event strong{font-size:12px;display:block;color:var(--ink)}.event p{font-size:11px;color:var(--muted);margin:2px 0 0}.barrow{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin:10px 0 4px;font-weight:bold}.bar{height:6px;background:var(--panel2);border-radius:10px;overflow:hidden}.bar i{display:block;height:100%;background:var(--accent);border-radius:10px;transition:width .25s}.bar.green i{background:var(--green)}.bar.gold i{background:var(--gold)}.section{display:none}.section.active{display:block}.choice-list{display:grid;gap:8px}.choice{padding:12px;border-radius:10px;border:1px solid var(--line);background:var(--panel)}.choice p{font-size:12px;color:var(--muted);margin:4px 0 10px}.choice strong{font-size:13px;color:var(--ink)}.btn{border:none;background:var(--accent);color:white;border-radius:8px;padding:8px 12px;font-size:12px;font-weight:bold}.btn:hover{background:var(--accent-hover)}.btn.secondary{background:transparent;border:1px solid var(--line);color:var(--muted)}.btn:disabled{opacity:.4;cursor:not-allowed}.chips{display:flex;flex-wrap:wrap;gap:6px}.chip{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:3px 8px;color:var(--muted);font-size:10px}.log{display:grid;gap:0}.log-item{padding:10px 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:65px 1fr;gap:10px}.log-item:last-child{border-bottom:0}.log-item time{color:var(--accent);font-size:10px;font-weight:bold}.log-item p{margin:0;font-size:12px;color:var(--ink)}.toast{position:fixed;bottom:20px;left:50%;transform:translate(-50%,20px);background:var(--ink);color:white;padding:10px 18px;border-radius:10px;font-size:12px;font-weight:bold;opacity:0;pointer-events:none;transition:.2s;box-shadow:0 8px 20px rgba(0,0,0,0.15);max-width:90vw;z-index:5}.toast.show{opacity:1;transform:translate(-50%,0)}.footer-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.mobile-nav{display:none}
+@media(max-width:760px){.app{display:block;padding-bottom:70px}.sidebar{display:none}.main{padding:16px 12px 24px}.stats{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.layout{grid-template-columns:1fr;gap:0}.card{padding:14px}.mobile-nav{display:grid;position:fixed;z-index:4;bottom:0;left:0;right:0;grid-template-columns:repeat(4,1fr);background:rgba(255,255,255,0.95);border-top:1px solid var(--line);padding:6px 4px calc(6px + env(safe-area-inset-bottom));backdrop-filter:blur(12px)}.mobile-nav button{border:0;background:transparent;color:var(--muted);font-size:10px;padding:4px 0;display:grid;gap:2px;justify-items:center;font-weight:bold}.mobile-nav button span{font-size:16px}.mobile-nav button.active{color:var(--accent)}}
 </style>
 </head>
 <body>
@@ -27,10 +26,9 @@
 <div id="start-screen">
  <div class="start-card">
   <h1>AFTER THE ENCORE</h1>
-  <p>推し活と、生活と、ときどき秘密。</p>
   <div class="input-group">
    <label>プレイヤー名</label>
-   <input type="text" id="playerNameInput" value="あなた">
+   <input type="text" id="playerNameInput" placeholder="名前を入力">
   </div>
   <button class="start-btn" onclick="startGame()">START</button>
  </div>
@@ -38,74 +36,73 @@
 
 <div class="app">
 <aside class="sidebar">
- <div class="brand"><strong>AFTER THE ENCORE</strong><span>推し活と、生活と、ときどき秘密。</span></div>
- <div class="profile"><div class="avatar">✦</div><strong id="sideName">あなた</strong><small>地下アイドル事務所・新人スタッフ</small></div>
- <nav class="nav" id="nav"><button class="active" data-page="home"><b>⌂</b>今日の生活</button><button data-page="work"><b>▤</b>事務所の仕事</button><button data-page="oshi"><b>♡</b>推し活</button><button data-page="social"><b>◎</b>SNS・界隈</button><button data-page="history"><b>≡</b>行動ログ</button></nav>
- <div class="side-note">DAY <span id="sideDay">1</span><br>選択によって変化するストーリー。</div>
+ <div class="brand">AFTER THE ENCORE</div>
+ <div class="profile"><strong id="sideName">プレイヤー</strong><small>地下アイドル事務所スタッフ</small></div>
+ <nav class="nav" id="nav"><button class="active" data-page="home">⌂ 生活</button><button data-page="work">▤ 仕事</button><button data-page="oshi">♡ 推し活</button><button data-page="social">◎ 界隈</button><button data-page="history">≡ ログ</button></nav>
+ <div class="side-note">DAY <span id="sideDay">1</span></div>
 </aside>
 <main class="main">
- <div class="topline"><div><h1 id="pageTitle">今日の生活</h1><p class="sub" id="pageSub">仕事も推し活も、自分のペースで。</p></div><div class="balance"><small>所持金</small><strong id="moneyTop">¥28,000</strong></div></div>
+ <div class="topline"><div><h1 id="pageTitle">生活</h1></div><div class="balance"><small>所持金</small><strong id="moneyTop">¥28,000</strong></div></div>
  <div class="stats">
-  <div class="stat"><label>所持金</label><strong id="moneyStat">¥28,000</strong><small id="moneyHint">次の給料日まで 6日</small></div>
-  <div class="stat"><label>推し活充実度</label><strong id="oshiStat">42<span style="font-size:12px;color:var(--muted)"> / 100</span></strong><small>自分の満足度</small></div>
-  <div class="stat"><label>信用</label><strong id="trustStat">65<span style="font-size:12px;color:var(--muted)"> / 100</span></strong><small>仕事・界隈の信用</small></div>
-  <div class="stat"><label>体力</label><strong id="energyStat">78<span style="font-size:12px;color:var(--muted)"> / 100</span></strong><small>コンディション</small></div>
+  <div class="stat"><label>所持金</label><strong id="moneyStat">¥28,000</strong><small id="moneyHint">給料日まで 6日</small></div>
+  <div class="stat"><label>推し活満足度</label><strong id="oshiStat">42<span style="font-size:11px;color:var(--muted)">/100</span></strong></div>
+  <div class="stat"><label>信用</label><strong id="trustStat">65<span style="font-size:11px;color:var(--muted)">/100</span></strong></div>
+  <div class="stat"><label>体力</label><strong id="energyStat">78<span style="font-size:11px;color:var(--muted)">/100</span></strong></div>
  </div>
  <section class="section active" id="page-home">
   <div class="layout"><div class="left-col">
-   <div class="card story"><div class="scene" id="sceneLabel">TUESDAY · 09:10</div><h2 id="storyTitle">新しい職場、いつもの推し</h2><p id="storyText">地下アイドル事務所「Lumen Works」で働き始めて、まだ一週間。今日は担当グループの告知を作る日。帰りには、好きなグループのリリースイベント情報も確認したい。</p><div class="chips"><span class="chip" id="dayChip">DAY 1</span><span class="chip">新人スタッフ</span><span class="chip">推し活中</span></div></div>
-   <div class="card"><div class="card-head"><h2>今日、どう過ごす？</h2><span class="tag">SELECT</span></div><div class="actions">
-    <button class="action" onclick="act('work')"><span class="symbol">▤</span><span class="copy"><strong>事務所で仕事をする</strong><small>告知作成や現場準備。仕事の評価を上げる</small></span><span class="gain">+評価</span></button>
-    <button class="action" onclick="act('oshi')"><span class="symbol">♡</span><span class="copy"><strong>推しの情報を追う</strong><small>公式SNS、イベント情報、リリースをチェック</small></span><span class="gain">+満足度</span></button>
-    <button class="action" onclick="act('rest')"><span class="symbol">☾</span><span class="copy"><strong>家で休む</strong><small>体力を回復。今日は自分を甘やかす</small></span><span class="gain">+体力</span></button>
-    <button class="action" onclick="act('scroll')"><span class="symbol">◎</span><span class="copy"><strong>SNSを眺める</strong><small>界隈の空気やファンの動きを見る</small></span><span class="gain">気分次第</span></button>
+   <div class="card story"><div class="scene" id="sceneLabel">DAY 1</div><h2 id="storyTitle">新しい職場、いつもの推し</h2><p id="storyText">地下アイドル事務所「Lumen Works」で働き始めて、まだ一週間。今日は担当グループの告知を作る日。帰りには、好きなグループのリリースイベント情報も確認したい。</p><div class="chips"><span class="chip" id="dayChip">DAY 1</span></div></div>
+   <div class="card"><div class="card-head"><h2>行動選択</h2></div><div class="actions">
+    <button class="action" onclick="act('work')"><span class="symbol">▤</span><span class="copy"><strong>事務所で仕事をする</strong><small>仕事の評価を上げる</small></span><span class="gain">+評価</span></button>
+    <button class="action" onclick="act('oshi')"><span class="symbol">♡</span><span class="copy"><strong>推しの情報を追う</strong><small>公式SNSやイベントをチェック</small></span><span class="gain">+満足度</span></button>
+    <button class="action" onclick="act('rest')"><span class="symbol">☾</span><span class="copy"><strong>家で休む</strong><small>体力を回復する</small></span><span class="gain">+体力</span></button>
+    <button class="action" onclick="act('scroll')"><span class="symbol">◎</span><span class="copy"><strong>SNSを眺める</strong><small>界隈の動きを見る</small></span></button>
    </div></div>
-   <div class="card"><div class="card-head"><h2>最近の出来事</h2><button class="btn secondary" onclick="showPage('history')">ログを見る</button></div><div class="feed" id="recentFeed"></div></div>
+   <div class="card"><div class="card-head"><h2>最近の出来事</h2><button class="btn secondary" onclick="showPage('history')">ログ一覧</button></div><div class="feed" id="recentFeed"></div></div>
   </div><div class="right-col">
-   <div class="card"><div class="card-head"><h2>パラメータ</h2><span class="tag">STATUS</span></div>
+   <div class="card"><div class="card-head"><h2>ステータス</h2></div>
     <div class="barrow"><span>仕事の評価</span><b id="workNum">28 / 100</b></div><div class="bar"><i id="workBar" style="width:28%"></i></div>
-    <div class="barrow"><span>推し活充実度</span><b id="oshiNum">42 / 100</b></div><div class="bar"><i id="oshiBar" style="width:42%"></i></div>
-    <div class="barrow"><span>界隈での評判</span><b id="repNum">55 / 100</b></div><div class="bar green"><i id="repBar" style="width:55%"></i></div>
-    <div class="barrow"><span>秘密・火種</span><b id="heatNum">8 / 100</b></div><div class="bar gold"><i id="heatBar" style="width:8%"></i></div>
+    <div class="barrow"><span>推し活満足度</span><b id="oshiNum">42 / 100</b></div><div class="bar"><i id="oshiBar" style="width:42%"></i></div>
+    <div class="barrow"><span>評判</span><b id="repNum">55 / 100</b></div><div class="bar green"><i id="repBar" style="width:55%"></i></div>
+    <div class="barrow"><span>火種</span><b id="heatNum">8 / 100</b></div><div class="bar gold"><i id="heatBar" style="width:8%"></i></div>
    </div>
-   <div class="card"><div class="card-head"><h2>予定</h2></div><div class="event"><div class="dot">♪</div><div><strong>金曜 · 給料日</strong><p>生活費と推し活費の配分を考える</p></div></div><div class="event" style="margin-top:14px"><div class="dot">✦</div><div><strong>日曜 · イベント情報</strong><p>公式発表を待つ</p></div></div></div>
+   <div class="card"><div class="card-head"><h2>予定</h2></div><div class="event"><div class="dot">♪</div><div><strong>金曜 · 給料日</strong><p>給料が入る日</p></div></div></div>
   </div></div>
  </section>
- <section class="section" id="page-work"><div class="layout"><div><div class="card"><div class="card-head"><h2>事務所・Lumen Works</h2></div><p class="sub" style="margin-bottom:15px">小さな地下アイドル事務所。仕事は幅広く、現場も近い。</p><div class="choice-list">
-  <div class="choice"><strong>公式SNSの告知を作る</strong><p>ライブ情報を整理して、ファンに伝わる投稿を準備する。</p><button class="btn" onclick="act('announce')">告知を作る · 体力 −8</button></div>
-  <div class="choice"><strong>ライブ現場の準備を手伝う</strong><p>物販リスト、導線、スタッフ間の連絡を確認する。</p><button class="btn" onclick="act('venue')">現場準備 · 体力 −14</button></div>
-  <div class="choice"><strong>メンバーの相談を聞く</strong><p>忙しいメンバーが少し気にかかっている。話を聞く時間を取る。</p><button class="btn" onclick="act('listen')">話を聞く · 体力 −10</button></div>
-  <div class="choice"><strong>残業して売上資料を仕上げる</strong><p>上司には喜ばれそう。でも自分の時間と体力は削られる。</p><button class="btn" onclick="act('overtime')">残業する · 体力 −20</button></div>
- </div></div></div><div><div class="card"><h2>仕事メモ</h2><p class="sub" style="margin-top:8px">担当グループ：mellow:bit</p><div class="barrow"><span>仕事の評価</span><b id="workNum2">28 / 100</b></div><div class="bar"><i id="workBar2" style="width:28%"></i></div></div></div></div></section>
- <section class="section" id="page-oshi"><div class="layout"><div><div class="card"><div class="card-head"><h2>推し活メニュー</h2></div><p class="sub" style="margin-bottom:15px">好きな活動を選んでみよう。</p><div class="choice-list">
-  <div class="choice"><strong>公式情報をチェックする</strong><p>出演情報やリリースのお知らせを読む。無料でできる推し活。</p><button class="btn" onclick="act('official')">公式をチェック</button></div>
-  <div class="choice"><strong>CDを1枚買う</strong><p>手元に残るうれしさ。出費はあるのでお財布と相談。</p><button class="btn" onclick="act('cd')">CDを買う · ¥1,800</button></div>
-  <div class="choice"><strong>イベントに参加する</strong><p>交通費や参加費がかかる。思い出と引き換えに時間も使う。</p><button class="btn" onclick="act('event')">イベントに行く · ¥3,500</button></div>
-  <div class="choice"><strong>推し活費を貯める</strong><p>今すぐ使わず、次の大事な予定に備える。</p><button class="btn" onclick="act('save')">今日は使わない</button></div>
- </div></div></div><div><div class="card"><h2>推し活の気持ち</h2><div class="barrow"><span>充実度</span><b id="oshiNum2">42 / 100</b></div><div class="bar"><i id="oshiBar2" style="width:42%"></i></div></div></div></div></section>
- <section class="section" id="page-social"><div class="layout"><div><div class="card"><div class="card-head"><h2>タイムライン</h2></div><p class="sub" style="margin-bottom:15px">どう振る舞うかはプレイヤー次第。</p><div class="choice-list">
-  <div class="choice"><strong>ファン同士の投稿を眺める</strong><p>現場の感想、交換募集、ちょっとした言い争い。</p><button class="btn" onclick="act('timeline')">タイムラインを見る</button></div>
-  <div class="choice"><strong>チケットの譲渡相談が届いた</strong><p>相手は「規約は確認してない」と言っている。</p><button class="btn" onclick="act('ticketSafe')">公式ルールを確認する</button> <button class="btn secondary" onclick="act('ticketRisk')">そのまま進める</button></div>
-  <div class="choice"><strong>禁止エリアで撮影している人を見かけた</strong><p>投稿すれば注目されそうだがルールの確認も必要。</p><button class="btn" onclick="act('photoSafe')">注意事項を確認する</button> <button class="btn secondary" onclick="act('photoRisk')">そのまま拡散する</button></div>
-  <div class="choice"><strong>関係者しか知らない話を聞いた</strong><p>本当かどうか分からない噂話。</p><button class="btn" onclick="act('secretSafe')">広めずにおく</button> <button class="btn secondary" onclick="act('secretRisk')">界隈に流す</button></div>
-  <div class="choice"><strong>同担の投稿が気になって仕方ない</strong><p>比べるほど気持ちがざわつく。</p><button class="btn" onclick="act('mute')">少し距離を置く</button> <button class="btn secondary" onclick="act('compete')">張り合ってしまう</button></div>
- </div></div></div><div><div class="card"><h2>コンディション</h2><div class="barrow"><span>界隈での評判</span><b id="repNum2">55 / 100</b></div><div class="bar green"><i id="repBar2" style="width:55%"></i></div><div class="barrow"><span>秘密・火種</span><b id="heatNum2">8 / 100</b></div><div class="bar gold"><i id="heatBar2" style="width:8%"></i></div></div></div></div></section>
- <section class="section" id="page-history"><div class="card"><div class="card-head"><h2>行動ログ</h2></div><div class="log" id="logList"></div><div class="footer-actions"><button class="btn secondary" onclick="saveGame(true)">セーブする</button><button class="btn secondary" onclick="resetGame()">最初からやり直す</button></div></div></section>
+ <section class="section" id="page-work"><div class="layout"><div><div class="card"><div class="card-head"><h2>仕事</h2></div><div class="choice-list">
+  <div class="choice"><strong>公式SNSの告知を作る</strong><p>ライブ情報を整理して投稿する。</p><button class="btn" onclick="act('announce')">告知作成 (-8体力)</button></div>
+  <div class="choice"><strong>ライブ現場の準備を手伝う</strong><p>物販リストや現場の確認。</p><button class="btn" onclick="act('venue')">現場準備 (-14体力)</button></div>
+  <div class="choice"><strong>メンバーの相談を聞く</strong><p>話を聞く時間を取る。</p><button class="btn" onclick="act('listen')">相談を聞く (-10体力)</button></div>
+  <div class="choice"><strong>残業して売上資料を仕上げる</strong><p>資料を完成させる。</p><button class="btn" onclick="act('overtime')">残業 (-20体力)</button></div>
+ </div></div></div><div><div class="card"><h2>仕事の状況</h2><div class="barrow"><span>仕事の評価</span><b id="workNum2">28 / 100</b></div><div class="bar"><i id="workBar2" style="width:28%"></i></div></div></div></div></section>
+ <section class="section" id="page-oshi"><div class="layout"><div><div class="card"><div class="card-head"><h2>推し活</h2></div><div class="choice-list">
+  <div class="choice"><strong>公式情報をチェックする</strong><p>出演情報やリリースを読む。</p><button class="btn" onclick="act('official')">チェックする</button></div>
+  <div class="choice"><strong>CDを1枚買う</strong><p>グッズ・作品の購入。</p><button class="btn" onclick="act('cd')">CD購入 (¥1,800)</button></div>
+  <div class="choice"><strong>イベントに参加する</strong><p>現場に行く。</p><button class="btn" onclick="act('event')">イベント参加 (¥3,500)</button></div>
+  <div class="choice"><strong>お金を貯める</strong><p>今日は使わない。</p><button class="btn" onclick="act('save')">使わない</button></div>
+ </div></div></div><div><div class="card"><h2>満足度</h2><div class="barrow"><span>満足度</span><b id="oshiNum2">42 / 100</b></div><div class="bar"><i id="oshiBar2" style="width:42%"></i></div></div></div></div></section>
+ <section class="section" id="page-social"><div class="layout"><div><div class="card"><div class="card-head"><h2>界隈</h2></div><div class="choice-list">
+  <div class="choice"><strong>投稿を眺める</strong><p>現場の感想などをチェック。</p><button class="btn" onclick="act('timeline')">タイムラインを見る</button></div>
+  <div class="choice"><strong>チケットの譲渡相談</strong><p>条件確認。</p><button class="btn" onclick="act('ticketSafe')">公式ルール確認</button> <button class="btn secondary" onclick="act('ticketRisk')">そのまま進める</button></div>
+  <div class="choice"><strong>撮影ルールの違反を見かけた</strong><p>対応を選ぶ。</p><button class="btn" onclick="act('photoSafe')">ルール確認</button> <button class="btn secondary" onclick="act('photoRisk')">そのまま拡散</button></div>
+  <div class="choice"><strong>噂話を聞いた</strong><p>扱いを選ぶ。</p><button class="btn" onclick="act('secretSafe')">流さない</button> <button class="btn secondary" onclick="act('secretRisk')">広める</button></div>
+ </div></div></div><div><div class="card"><h2>コンディション</h2><div class="barrow"><span>評判</span><b id="repNum2">55 / 100</b></div><div class="bar green"><i id="repBar2" style="width:55%"></i></div><div class="barrow"><span>火種</span><b id="heatNum2">8 / 100</b></div><div class="bar gold"><i id="heatBar2" style="width:8%"></i></div></div></div></div></section>
+ <section class="section" id="page-history"><div class="card"><div class="card-head"><h2>行動ログ</h2></div><div class="log" id="logList"></div><div class="footer-actions"><button class="btn secondary" onclick="saveGame(true)">セーブ</button><button class="btn secondary" onclick="resetGame()">最初からやり直す</button></div></div></section>
  <div class="mobile-nav" id="mobileNav"><button class="active" data-page="home"><span>⌂</span>生活</button><button data-page="work"><span>▤</span>仕事</button><button data-page="oshi"><span>♡</span>推し活</button><button data-page="social"><span>◎</span>界隈</button></div>
 </main></div><div class="toast" id="toast"></div>
 <script>
-var initial={name:'あなた',day:1,turns:0,money:28000,oshi:42,trust:65,energy:78,work:28,rep:55,heat:8,logs:[{day:1,time:'09:10',text:'Lumen Worksでの仕事が始まった。推し活との両立も、これから。'}],events:[]};
+var initial={name:'',day:1,turns:0,money:28000,oshi:42,trust:65,energy:78,work:28,rep:55,heat:8,logs:[{day:1,time:'09:10',text:'仕事が始まった。'}],events:[]};
 var s=loadGame()||JSON.parse(JSON.stringify(initial));
 var current='home';
 function $(id){return document.getElementById(id);}
 function clamp(n){return Math.max(0,Math.min(100,Math.round(n)));}
 function yen(n){return '¥'+Math.round(n).toLocaleString('ja-JP');}
 function loadGame(){try{return JSON.parse(localStorage.getItem('afterEncoreSave'))}catch(e){return null}}
-function saveGame(show){try{localStorage.setItem('afterEncoreSave',JSON.stringify(s));if(show)toast('セーブしました')}catch(e){if(show)toast('このブラウザではセーブできませんでした')}}
+function saveGame(show){try{localStorage.setItem('afterEncoreSave',JSON.stringify(s));if(show)toast('セーブしました')}catch(e){if(show)toast('セーブ失敗')}}
 
 function startGame(){
  var inputVal=$('playerNameInput').value.trim();
- if(inputVal){s.name=inputVal;}
+ s.name=inputVal || 'プレイヤー';
  $('start-screen').style.display='none';
  saveGame();
  render();
@@ -113,32 +110,30 @@ function startGame(){
 
 function log(text){s.logs.unshift({day:s.day,time:new Date().toLocaleTimeString('ja-JP',{hour:'2-digit',minute:'2-digit'}),text:text});s.logs=s.logs.slice(0,80);s.events.unshift(text);s.events=s.events.slice(0,3)}
 function toast(t){var el=$('toast');el.textContent=t;el.classList.add('show');clearTimeout(window.toastTimer);window.toastTimer=setTimeout(function(){el.classList.remove('show')},2200)}
-function spend(amount){if(s.money<amount){toast('お金が足りない…今日は別の選択をしてみよう');return false}s.money-=amount;return true}
-function tired(n){if(s.energy<n){toast('体力が足りない…少し休んでからにしよう');return false}s.energy-=n;return true}
+function spend(amount){if(s.money<amount){toast('お金が足りない');return false}s.money-=amount;return true}
+function tired(n){if(s.energy<n){toast('体力が足りない');return false}s.energy-=n;return true}
 function act(type){
  var msg='';
  switch(type){
-  case'work':if(!tired(12))return;s.work=clamp(s.work+5);s.trust=clamp(s.trust+2);msg='事務所で告知の確認と資料整理を進めた。少しずつ仕事に慣れてきた。';break;
-  case'oshi':s.oshi=clamp(s.oshi+5);s.energy=clamp(s.energy-4);msg='推しの公式投稿をチェック。次の活動予定が気になって、つい何度も見てしまう。';break;
-  case'rest':s.energy=clamp(s.energy+22);msg='今日は家でゆっくりした。少しだけ気持ちに余裕が戻った。';break;
-  case'scroll':if(Math.random()<0.5){s.rep=clamp(s.rep+2);msg='タイムラインで気の合うファンの感想を見つけた。少し楽しい気分。'}else{s.energy=clamp(s.energy-5);s.heat=clamp(s.heat+2);msg='タイムラインの言い争いが気になって、思った以上に時間を使ってしまった。'}break;
-  case'announce':if(!tired(8))return;s.work=clamp(s.work+8);s.trust=clamp(s.trust+3);msg='公式告知を丁寧に仕上げた。上司から「見やすいね」と短い返事が来た。';break;
-  case'venue':if(!tired(14))return;s.work=clamp(s.work+10);s.trust=clamp(s.trust+4);msg='現場準備を終えた。細かい確認が多かったけれど、大きなミスなく進んだ。';break;
-  case'listen':if(!tired(10))return;s.trust=clamp(s.trust+7);s.work=clamp(s.work+3);msg='メンバーの話を聞いた。すぐ解決できなくても、話せたことに意味があったようだ。';break;
-  case'overtime':if(!tired(20))return;s.work=clamp(s.work+12);s.money+=1200;s.energy=clamp(s.energy-4);msg='残業で資料を仕上げた。少し評価は上がったけれど、帰宅したらぐったり。';break;
-  case'official':s.oshi=clamp(s.oshi+4);msg='公式のお知らせを確認。イベント日程をカレンダーにメモした。';break;
-  case'cd':if(!spend(1800))return;s.oshi=clamp(s.oshi+9);msg='CDを1枚購入。開封する時間まで、ちょっとそわそわする。';break;
-  case'event':if(!spend(3500))return;if(!tired(12)){s.money+=3500;return}s.oshi=clamp(s.oshi+15);s.rep=clamp(s.rep+2);msg='イベントに参加した。短い時間でも、会えてよかったと思えた。';break;
-  case'save':s.trust=clamp(s.trust+1);msg='今日は買わずにお金を残した。次の現場のための小さな準備。';break;
-  case'timeline':if(Math.random()<0.5){s.rep=clamp(s.rep+3);msg='タイムラインで現場の感想を読んだ。新しい情報も見つかった。'}else{s.energy=clamp(s.energy-4);msg='界隈の言い争いを見てしまい、少し疲れた。いったん画面を閉じる。';}break;
-  case'ticketSafe':s.rep=clamp(s.rep+3);s.trust=clamp(s.trust+1);msg='チケットの公式規約を確認した。条件が曖昧な取引は急がず、正規の方法を選ぶことにした。';break;
-  case'ticketRisk':s.heat=clamp(s.heat+12);s.rep=clamp(s.rep-5);s.oshi=clamp(s.oshi+3);msg='条件をよく確認せず、譲渡の話を進めてしまった。一時的には得した気分だけど、あとから不安が残る。';break;
-  case'photoSafe':s.rep=clamp(s.rep+2);msg='イベントの撮影・投稿ルールを確認した。会場ごとに違うので、公式の案内を優先することにした。';break;
-  case'photoRisk':s.heat=clamp(s.heat+10);s.rep=clamp(s.rep-6);msg='ルールを確かめずに投稿を広めてしまった。注目は集まったけれど、注意されるかもしれない。';break;
-  case'secretSafe':s.trust=clamp(s.trust+2);s.rep=clamp(s.rep+2);msg='関係者しか知らないという話は広めずにおいた。確かな情報か分からないし、誰かを傷つけるかもしれない。';break;
-  case'secretRisk':s.heat=clamp(s.heat+16);s.rep=clamp(s.rep-8);msg='聞いた話を界隈に流した。反応はあったけれど、出どころを知る人がいるかもしれない。';break;
-  case'mute':s.energy=clamp(s.energy+5);s.rep=clamp(s.rep+1);msg='気になる相手の投稿をミュートして距離を置いた。自分の推し活を、自分のペースに戻す。';break;
-  case'compete':s.oshi=clamp(s.oshi+2);s.energy=clamp(s.energy-7);s.heat=clamp(s.heat+5);s.rep=clamp(s.rep-3);msg='同担に張り合って投稿した。反応は気になるけれど、心が休まらない。';break;
+  case'work':if(!tired(12))return;s.work=clamp(s.work+5);s.trust=clamp(s.trust+2);msg='事務所で告知作成と資料整理を進めた。';break;
+  case'oshi':s.oshi=clamp(s.oshi+5);s.energy=clamp(s.energy-4);msg='推しの公式投稿をチェックした。';break;
+  case'rest':s.energy=clamp(s.energy+22);msg='家でゆっくり休んだ。';break;
+  case'scroll':if(Math.random()<0.5){s.rep=clamp(s.rep+2);msg='タイムラインでファンの感想を見た。'}else{s.energy=clamp(s.energy-5);s.heat=clamp(s.heat+2);msg='タイムラインの議論に時間を取られた。'}break;
+  case'announce':if(!tired(8))return;s.work=clamp(s.work+8);s.trust=clamp(s.trust+3);msg='公式告知を丁寧に仕上げた。';break;
+  case'venue':if(!tired(14))return;s.work=clamp(s.work+10);s.trust=clamp(s.trust+4);msg='現場準備を完了した。';break;
+  case'listen':if(!tired(10))return;s.trust=clamp(s.trust+7);s.work=clamp(s.work+3);msg='メンバーの相談に乗った。';break;
+  case'overtime':if(!tired(20))return;s.work=clamp(s.work+12);s.money+=1200;s.energy=clamp(s.energy-4);msg='残業で資料を終わらせた。';break;
+  case'official':s.oshi=clamp(s.oshi+4);msg='公式情報をチェックした。';break;
+  case'cd':if(!spend(1800))return;s.oshi=clamp(s.oshi+9);msg='CDを1枚購入した。';break;
+  case'event':if(!spend(3500))return;if(!tired(12)){s.money+=3500;return}s.oshi=clamp(s.oshi+15);s.rep=clamp(s.rep+2);msg='イベントに参加した。';break;
+  case'save':s.trust=clamp(s.trust+1);msg='お金を使わずに残した。';break;
+  case'timeline':if(Math.random()<0.5){s.rep=clamp(s.rep+3);msg='タイムラインをチェックした。'}else{s.energy=clamp(s.energy-4);msg='議論を見て少し疲れた。';}break;
+  case'ticketSafe':s.rep=clamp(s.rep+3);s.trust=clamp(s.trust+1);msg='チケットの公式規約を確認した。';break;
+  case'ticketRisk':s.heat=clamp(s.heat+12);s.rep=clamp(s.rep-5);s.oshi=clamp(s.oshi+3);msg='曖昧なまま譲渡を進めた。';break;
+  case'photoSafe':s.rep=clamp(s.rep+2);msg='イベントの撮影ルールを確認した。';break;
+  case'photoRisk':s.heat=clamp(s.heat+10);s.rep=clamp(s.rep-6);msg='ルール不透明なまま拡散した。';break;
+  case'secretSafe':s.trust=clamp(s.trust+2);s.rep=clamp(s.rep+2);msg='噂話は流さずに留めた。';break;
+  case'secretRisk':s.heat=clamp(s.heat+16);s.rep=clamp(s.rep-8);msg='聞いた話を界隈に流した。';break;
  }
  if(!msg)return;
  log(msg);
@@ -155,16 +150,16 @@ function advanceMaybe(){
   if(s.energy<=10){
    s.energy=clamp(s.energy+30);
    s.money=Math.max(0,s.money-600);
-   log('疲れがたまり、予定を切り上げて休んだ。生活費が少し出ていった。');
+   log('疲れて早く休んだ。');
   }else{
    s.energy=clamp(s.energy+6);
-   log('一日が終わった。少し休んで、明日の予定を考えた。');
+   log('一日が終わった。');
   }
   if(s.day%7===0){
    s.money+=18000;
    s.energy=clamp(s.energy+8);
    s.trust=clamp(s.trust+1);
-   log('給料日。給料 ¥18,000 が入った。今週もおつかれさま。');
+   log('給料日！¥18,000 が入った。');
   }
  }
 }
@@ -174,15 +169,8 @@ function showPage(page){
  for(var i=0;i<secs.length;i++){secs[i].classList.toggle('active',secs[i].id==='page-'+page);}
  var btns=document.querySelectorAll('[data-page]');
  for(var j=0;j<btns.length;j++){btns[j].classList.toggle('active',btns[j].dataset.page===page);}
- var titles={
-  home:['今日の生活','仕事も推し活も、自分のペースで。'],
-  work:['事務所の仕事','小さな事務所で、できることをひとつずつ。'],
-  oshi:['推し活','好きな気持ちと、お財布のバランス。'],
-  social:['SNS・界隈','ルールも距離感も、自分で選ぶ。'],
-  history:['行動ログ','これまでの選択が、あなたの物語になる。']
- };
- $('pageTitle').textContent=titles[page][0];
- $('pageSub').textContent=titles[page][1];
+ var titles={home:'生活',work:'仕事',oshi:'推し活',social:'界隈',history:'ログ'};
+ $('pageTitle').textContent=titles[page];
 }
 var navBtns=document.querySelectorAll('[data-page]');
 for(var k=0;k<navBtns.length;k++){
@@ -196,13 +184,11 @@ function render(){
  var remDays=7-(s.day%7);
  if(remDays===7)remDays=0;
  $('moneyHint').textContent='給料日まで '+remDays+'日';
- $('oshiStat').innerHTML=s.oshi+'<span style="font-size:12px;color:var(--muted)"> / 100</span>';
- $('trustStat').innerHTML=s.trust+'<span style="font-size:12px;color:var(--muted)"> / 100</span>';
- $('energyStat').innerHTML=s.energy+'<span style="font-size:12px;color:var(--muted)"> / 100</span>';
+ $('oshiStat').innerHTML=s.oshi+'<span style="font-size:11px;color:var(--muted)">/100</span>';
+ $('trustStat').innerHTML=s.trust+'<span style="font-size:11px;color:var(--muted)">/100</span>';
+ $('energyStat').innerHTML=s.energy+'<span style="font-size:11px;color:var(--muted)">/100</span>';
  $('sideDay').textContent=s.day;
  $('dayChip').textContent='DAY '+s.day;
- var days=['MONDAY','TUESDAY','WEDNESDAY','THURSDAY','FRIDAY','SATURDAY','SUNDAY'];
- $('sceneLabel').textContent=days[(s.day-1)%7]+' · '+(s.day%2?'09:10':'18:40');
  $('workNum').textContent=s.work+' / 100';
  $('workNum2').textContent=s.work+' / 100';
  $('oshiNum').textContent=s.oshi+' / 100';
@@ -224,12 +210,11 @@ function render(){
   html2+='<div class="log-item"><time>DAY '+s.logs[p].day+'<br>'+s.logs[p].time+'</time><p>'+esc(s.logs[p].text)+'</p></div>';
  }
  $('logList').innerHTML=html2;
- $('storyTitle').textContent=s.day<3?'新しい職場、いつもの推し':s.heat>35?'界隈に小さな波紋が広がる':s.money<5000?'お財布の中身が心もとない':s.energy<30?'ちょっと休みたい日':'今日も、仕事と推し活のあいだ';
- $('storyText').textContent=s.heat>35?'最近の行動が、少しずつ周りに影響している。何を守って、何を選ぶのか。まだ引き返すこともできる。':s.money<5000?'次の給料日まで少しある。推し活に使うか、生活のために残すか。今日は無理せず選んでいい。':s.day<3?'地下アイドル事務所「Lumen Works」で働き始めて、まだ一週間。今日は担当グループの告知を作る日。帰りには、好きなグループのリリースイベント情報も確認したい。':'今日も事務所の仕事と推し活が待っている。小さな選択が、評判や人間関係、明日の予定に少しずつ積み重なっていく。';
- $('sideName').textContent=(s.name||'あなた')+' · DAY '+s.day;
+ $('sideName').textContent=(s.name||'プレイヤー');
 }
 function esc(str){return String(str).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
-function resetGame(){if(confirm('セーブデータを消して、最初から始めますか？')){s=JSON.parse(JSON.stringify(initial));saveGame();location.reload();}}
+function resetGame(){if(confirm('最初からやり直しますか？')){s=JSON.parse(JSON.stringify(initial));saveGame();location.reload();}}
+if(s.name){$('start-screen').style.display='none';}
 render();
 </script>
 </body></html>
