@@ -67,20 +67,133 @@
  <div class="mobile-nav" id="mobileNav"><button class="active" data-page="home"><span>⌂</span>生活</button><button data-page="work"><span>▤</span>仕事</button><button data-page="oshi"><span>♡</span>推し活</button><button data-page="social"><span>◎</span>界隈</button></div>
 </main></div><div class="toast" id="toast"></div>
 <script>
-const initial={day:1,turns:0,money:28000,oshi:42,trust:65,energy:78,work:28,rep:55,heat:8,logs:[{day:1,time:'09:10',text:'Lumen Worksでの仕事が始まった。推し活との両立も、これから。'}],events:[]};let s=loadGame()||structuredClone(initial);let current='home';
-const $=id=>document.getElementById(id);const clamp=n=>Math.max(0,Math.min(100,Math.round(n)));const yen=n=>'¥'+Math.round(n).toLocaleString('ja-JP');
-function loadGame(){try{return JSON.parse(localStorage.getItem('afterEncoreSave'))}catch(e){return null}}function saveGame(show=false){try{localStorage.setItem('afterEncoreSave',JSON.stringify(s));if(show)toast('セーブしました')}catch(e){if(show)toast('このブラウザではセーブできませんでした')}}
-function log(text){s.logs.unshift({day:s.day,time:new Date().toLocaleTimeString('ja-JP',{hour:'2-digit',minute:'2-digit'}),text});s.logs=s.logs.slice(0,80);s.events.unshift(text);s.events=s.events.slice(0,3)}function toast(t){const el=$('toast');el.textContent=t;el.classList.add('show');clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>el.classList.remove('show'),2200)}
-function spend(amount){if(s.money<amount){toast('お金が足りない…今日は別の選択をしてみよう');return false}s.money-=amount;return true}function tired(n){if(s.energy<n){toast('体力が足りない…少し休んでからにしよう');return false}s.energy-=n;return true}
-function act(type){let msg='';switch(type){case'work':if(!tired(12))return;s.work=clamp(s.work+5);s.trust=clamp(s.trust+2);msg='事務所で告知の確認と資料整理を進めた。少しずつ仕事に慣れてきた。';break;case'oshi':s.oshi=clamp(s.oshi+5);s.energy=clamp(s.energy-4);msg='推しの公式投稿をチェック。次の活動予定が気になって、つい何度も見てしまう。';break;case'rest':s.energy=clamp(s.energy+22);msg='今日は家でゆっくりした。少しだけ気持ちに余裕が戻った。';break;case'scroll':if(Math.random()<.5){s.rep=clamp(s.rep+2);msg='タイムラインで気の合うファンの感想を見つけた。少し楽しい気分。'}else{s.energy=clamp(s.energy-5);s.heat=clamp(s.heat+2);msg='タイムラインの言い争いが気になって、思った以上に時間を使ってしまった。'}break;
-case'announce':if(!tired(8))return;s.work=clamp(s.work+8);s.trust=clamp(s.trust+3);msg='公式告知を丁寧に仕上げた。上司から「見やすいね」と短い返事が来た。';break;case'venue':if(!tired(14))return;s.work=clamp(s.work+10);s.trust=clamp(s.trust+4);msg='現場準備を終えた。細かい確認が多かったけれど、大きなミスなく進んだ。';break;case'listen':if(!tired(10))return;s.trust=clamp(s.trust+7);s.work=clamp(s.work+3);msg='メンバーの話を聞いた。すぐ解決できなくても、話せたことに意味があったようだ。';break;case'overtime':if(!tired(20))return;s.work=clamp(s.work+12);s.money+=1200;s.energy=clamp(s.energy-4);msg='残業で資料を仕上げた。少し評価は上がったけれど、帰宅したらぐったり。';break;
-case'official':s.oshi=clamp(s.oshi+4);msg='公式のお知らせを確認。イベント日程をカレンダーにメモした。';break;case'cd':if(!spend(1800))return;s.oshi=clamp(s.oshi+9);msg='CDを1枚購入。開封する時間まで、ちょっとそわそわする。';break;case'event':if(!spend(3500))return;if(!tired(12)) {s.money+=3500;return} s.oshi=clamp(s.oshi+15);s.rep=clamp(s.rep+2);msg='イベントに参加した。短い時間でも、会えてよかったと思えた。';break;case'save':s.money+=0;s.trust=clamp(s.trust+1);msg='今日は買わずにお金を残した。次の現場のための小さな準備。';break;
-case'timeline':if(Math.random()<.5){s.rep=clamp(s.rep+3);msg='タイムラインで現場の感想を読んだ。新しい情報も見つかった。'}else{s.energy=clamp(s.energy-4);msg='界隈の言い争いを見てしまい、少し疲れた。いったん画面を閉じる。'}break;case'ticketSafe':s.rep=clamp(s.rep+3);s.trust=clamp(s.trust+1);msg='チケットの公式規約を確認した。条件が曖昧な取引は急がず、正規の方法を選ぶことにした。';break;case'ticketRisk':s.heat=clamp(s.heat+12);s.rep=clamp(s.rep-5);s.oshi=clamp(s.oshi+3);msg='条件をよく確認せず、譲渡の話を進めてしまった。一時的には得した気分だけど、あとから不安が残る。';break;case'photoSafe':s.rep=clamp(s.rep+2);msg='イベントの撮影・投稿ルールを確認した。会場ごとに違うので、公式の案内を優先することにした。';break;case'photoRisk':s.heat=clamp(s.heat+10);s.rep=clamp(s.rep-6);msg='ルールを確かめずに投稿を広めてしまった。注目は集まったけれど、注意されるかもしれない。';break;case'secretSafe':s.trust=clamp(s.trust+2);s.rep=clamp(s.rep+2);msg='関係者しか知らないという話は広めずにおいた。確かな情報か分からないし、誰かを傷つけるかもしれない。';break;case'secretRisk':s.heat=clamp(s.heat+16);s.rep=clamp(s.rep-8);msg='聞いた話を界隈に流した。反応はあったけれど、出どころを知る人がいるかもしれない。';break;case'mute':s.energy=clamp(s.energy+5);s.rep=clamp(s.rep+1);msg='気になる相手の投稿をミュートして距離を置いた。自分の推し活を、自分のペースに戻す。';break;case'compete':s.oshi=clamp(s.oshi+2);s.energy=clamp(s.energy-7);s.heat=clamp(s.heat+5);s.rep=clamp(s.rep-3);msg='同担に張り合って投稿した。反応は気になるけれど、心が休まらない。';break;}
-if(!msg)return;log(msg);advanceMaybe();render();saveGame();toast(msg)}
-function advanceMaybe(){s.turns=(s.turns||0)+1;if(s.energy<=10||s.turns>=3){s.day++;s.turns=0;if(s.energy<=10){s.energy=clamp(s.energy+30);s.money=Math.max(0,s.money-600);log('疲れがたまり、予定を切り上げて休んだ。生活費が少し出ていった。')}else{s.energy=clamp(s.energy+6);log('一日が終わった。少し休んで、明日の予定を考えた。')}if(s.day%7===0){s.money+=18000;s.energy=clamp(s.energy+8);s.trust=clamp(s.trust+1);log('給料日。給料 ¥18,000 が入った。今週もおつかれさま。')}}}
-function showPage(page){current=page;document.querySelectorAll('.section').forEach(x=>x.classList.toggle('active',x.id==='page-'+page));document.querySelectorAll('[data-page]').forEach(x=>x.classList.toggle('active',x.dataset.page===page));const titles={home:['今日の生活','仕事も推し活も、自分のペースで。'],work:['事務所の仕事','小さな事務所で、できることをひとつずつ。'],oshi:['推し活','好きな気持ちと、お財布のバランス。'],social:['SNS・界隈','ルールも距離感も、自分で選ぶ。'],history:['行動ログ','これまでの選択が、あなたの物語になる。']};$('pageTitle').textContent=titles[page][0];$('pageSub').textContent=titles[page][1];}
-document.querySelectorAll('[data-page]').forEach(b=>b.addEventListener('click',()=>showPage(b.dataset.page)));
-function render(){['moneyTop','moneyStat'].forEach(id=>$(id).textContent=yen(s.money));$('moneyHint').textContent='給料日まで '+(7-(s.day\%7\vert{}\vert{}0))+'日';$('oshiStat').innerHTML=s.oshi+'<span style="font-size:12px;color:var(--muted)"> / 100</span>';$('trustStat').innerHTML=s.trust+'<span style="font-size:12px;color:var(--muted)"> / 100</span>';$('energyStat').innerHTML=s.energy+'<span style="font-size:12px;color:var(--muted)"> / 100</span>';$('sideDay').textContent=s.day;$('dayChip').textContent='DAY '+s.day;$('sceneLabel').textContent=['MONDAY','TUESDAY','WEDNESDAY','THURSDAY','FRIDAY','SATURDAY','SUNDAY'][(s.day-1)%7]+' · '+(s.day%2?'09:10':'18:40');$('workNum').textContent=s.work+' / 100';$('workNum2').textContent=s.work+' / 100';$('oshiNum').textContent=s.oshi+' / 100';$('oshiNum2').textContent=s.oshi+' / 100';$('repNum').textContent=s.rep+' / 100';$('repNum2').textContent=s.rep+' / 100';$('heatNum').textContent=s.heat+' / 100';$('heatNum2').textContent=s.heat+' / 100';[['workBar',s.work],['workBar2',s.work],['oshiBar',s.oshi],['oshiBar2',s.oshi],['repBar',s.rep],['repBar2',s.rep],['heatBar',s.heat],['heatBar2',s.heat]].forEach(([id,n])=>$(id).style.width=n+'\%');$('recentFeed').innerHTML=s.logs.slice(0,3).map((x,i)=>`<div class="event"><div class="dot">${i===0?'✦':'·'}</div><div><strong>DAY ${x.day} · ${x.time}</strong><p>${esc(x.text)}</p></div></div>`).join('');$('logList').innerHTML=s.logs.map(x=>`<div class="log-item"><time>DAY ${x.day}<br>${x.time}</time><p>${esc(x.text)}</p></div>`).join('');$('storyTitle').textContent=s.day<3?'新しい職場、いつもの推し':s.heat>35?'界隈に小さな波紋が広がる':s.money<5000?'お財布の中身が心もとない':s.energy<30?'ちょっと休みたい日':'今日も、仕事と推し活のあいだ';$('storyText').textContent=s.heat>35?'最近の行動が、少しずつ周りに影響している。何を守って、何を選ぶのか。まだ引き返すこともできる。':s.money<5000?'次の給料日まで少しある。推し活に使うか、生活のために残すか。今日は無理せず選んでいい。':s.day<3?'地下アイドル事務所「Lumen Works」で働き始めて、まだ一週間。今日は担当グループの告知を作る日。帰りには、好きなグループのリリースイベント情報も確認したい。':'今日も事務所の仕事と推し活が待っている。小さな選択が、評判や人間関係、明日の予定に少しずつ積み重なっていく。';$('sideName').textContent='あなた · DAY '+s.day;}
-function esc(str){return String(str).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}function resetGame(){if(confirm('セーブデータを消して、最初から始めますか？')){s=structuredClone(initial);saveGame();render();showPage('home');toast('新しい人生を始めました')}}render();
+var initial={day:1,turns:0,money:28000,oshi:42,trust:65,energy:78,work:28,rep:55,heat:8,logs:[{day:1,time:'09:10',text:'Lumen Worksでの仕事が始まった。推し活との両立も、これから。'}],events:[]};
+var s=loadGame()||JSON.parse(JSON.stringify(initial));
+var current='home';
+function $(id){return document.getElementById(id);}
+function clamp(n){return Math.max(0,Math.min(100,Math.round(n)));}
+function yen(n){return '¥'+Math.round(n).toLocaleString('ja-JP');}
+function loadGame(){try{return JSON.parse(localStorage.getItem('afterEncoreSave'))}catch(e){return null}}
+function saveGame(show){try{localStorage.setItem('afterEncoreSave',JSON.stringify(s));if(show)toast('セーブしました')}catch(e){if(show)toast('このブラウザではセーブできませんでした')}}
+function log(text){s.logs.unshift({day:s.day,time:new Date().toLocaleTimeString('ja-JP',{hour:'2-digit',minute:'2-digit'}),text:text});s.logs=s.logs.slice(0,80);s.events.unshift(text);s.events=s.events.slice(0,3)}
+function toast(t){var el=$('toast');el.textContent=t;el.classList.add('show');clearTimeout(window.toastTimer);window.toastTimer=setTimeout(function(){el.classList.remove('show')},2200)}
+function spend(amount){if(s.money<amount){toast('お金が足りない…今日は別の選択をしてみよう');return false}s.money-=amount;return true}
+function tired(n){if(s.energy<n){toast('体力が足りない…少し休んでからにしよう');return false}s.energy-=n;return true}
+function act(type){
+ var msg='';
+ switch(type){
+  case'work':if(!tired(12))return;s.work=clamp(s.work+5);s.trust=clamp(s.trust+2);msg='事務所で告知の確認と資料整理を進めた。少しずつ仕事に慣れてきた。';break;
+  case'oshi':s.oshi=clamp(s.oshi+5);s.energy=clamp(s.energy-4);msg='推しの公式投稿をチェック。次の活動予定が気になって、つい何度も見てしまう。';break;
+  case'rest':s.energy=clamp(s.energy+22);msg='今日は家でゆっくりした。少しだけ気持ちに余裕が戻った。';break;
+  case'scroll':if(Math.random()<0.5){s.rep=clamp(s.rep+2);msg='タイムラインで気の合うファンの感想を見つけた。少し楽しい気分。'}else{s.energy=clamp(s.energy-5);s.heat=clamp(s.heat+2);msg='タイムラインの言い争いが気になって、思った以上に時間を使ってしまった。'}break;
+  case'announce':if(!tired(8))return;s.work=clamp(s.work+8);s.trust=clamp(s.trust+3);msg='公式告知を丁寧に仕上げた。上司から「見やすいね」と短い返事が来た。';break;
+  case'venue':if(!tired(14))return;s.work=clamp(s.work+10);s.trust=clamp(s.trust+4);msg='現場準備を終えた。細かい確認が多かったけれど、大きなミスなく進んだ。';break;
+  case'listen':if(!tired(10))return;s.trust=clamp(s.trust+7);s.work=clamp(s.work+3);msg='メンバーの話を聞いた。すぐ解決できなくても、話せたことに意味があったようだ。';break;
+  case'overtime':if(!tired(20))return;s.work=clamp(s.work+12);s.money+=1200;s.energy=clamp(s.energy-4);msg='残業で資料を仕上げた。少し評価は上がったけれど、帰宅したらぐったり。';break;
+  case'official':s.oshi=clamp(s.oshi+4);msg='公式のお知らせを確認。イベント日程をカレンダーにメモした。';break;
+  case'cd':if(!spend(1800))return;s.oshi=clamp(s.oshi+9);msg='CDを1枚購入。開封する時間まで、ちょっとそわそわする。';break;
+  case'event':if(!spend(3500))return;if(!tired(12)){s.money+=3500;return}s.oshi=clamp(s.oshi+15);s.rep=clamp(s.rep+2);msg='イベントに参加した。短い時間でも、会えてよかったと思えた。';break;
+  case'save':s.trust=clamp(s.trust+1);msg='今日は買わずにお金を残した。次の現場のための小さな準備。';break;
+  case'timeline':if(Math.random()<0.5){s.rep=clamp(s.rep+3);msg='タイムラインで現場の感想を読んだ。新しい情報も見つかった。'}else{s.energy=clamp(s.energy-4);msg='界隈の言い争いを見てしまい、少し疲れた。いったん画面を閉じる。'}break;
+  case'ticketSafe':s.rep=clamp(s.rep+3);s.trust=clamp(s.trust+1);msg='チケットの公式規約を確認した。条件が曖昧な取引は急がず、正規の方法を選ぶことにした。';break;
+  case'ticketRisk':s.heat=clamp(s.heat+12);s.rep=clamp(s.rep-5);s.oshi=clamp(s.oshi+3);msg='条件をよく確認せず、譲渡の話を進めてしまった。一時的には得した気分だけど、あとから不安が残る。';break;
+  case'photoSafe':s.rep=clamp(s.rep+2);msg='イベントの撮影・投稿ルールを確認した。会場ごとに違うので、公式の案内を優先することにした。';break;
+  case'photoRisk':s.heat=clamp(s.heat+10);s.rep=clamp(s.rep-6);msg='ルールを確かめずに投稿を広めてしまった。注目は集まったけれど、注意されるかもしれない。';break;
+  case'secretSafe':s.trust=clamp(s.trust+2);s.rep=clamp(s.rep+2);msg='関係者しか知らないという話は広めずにおいた。確かな情報か分からないし、誰かを傷つけるかもしれない。';break;
+  case'secretRisk':s.heat=clamp(s.heat+16);s.rep=clamp(s.rep-8);msg='聞いた話を界隈に流した。反応はあったけれど、出どころを知る人がいるかもしれない。';break;
+  case'mute':s.energy=clamp(s.energy+5);s.rep=clamp(s.rep+1);msg='気になる相手の投稿をミュートして距離を置いた。自分の推し活を、自分のペースに戻す。';break;
+  case'compete':s.oshi=clamp(s.oshi+2);s.energy=clamp(s.energy-7);s.heat=clamp(s.heat+5);s.rep=clamp(s.rep-3);msg='同担に張り合って投稿した。反応は気になるけれど、心が休まらない。';break;
+ }
+ if(!msg)return;
+ log(msg);
+ advanceMaybe();
+ render();
+ saveGame();
+ toast(msg);
+}
+function advanceMaybe(){
+ s.turns=(s.turns||0)+1;
+ if(s.energy<=10||s.turns>=3){
+  s.day++;
+  s.turns=0;
+  if(s.energy<=10){
+   s.energy=clamp(s.energy+30);
+   s.money=Math.max(0,s.money-600);
+   log('疲れがたまり、予定を切り上げて休んだ。生活費が少し出ていった。');
+  }else{
+   s.energy=clamp(s.energy+6);
+   log('一日が終わった。少し休んで、明日の予定を考えた。');
+  }
+  if(s.day%7===0){
+   s.money+=18000;
+   s.energy=clamp(s.energy+8);
+   s.trust=clamp(s.trust+1);
+   log('給料日。給料 ¥18,000 が入った。今週もおつかれさま。');
+  }
+ }
+}
+function showPage(page){
+ current=page;
+ var secs=document.querySelectorAll('.section');
+ for(var i=0;i<secs.length;i++){secs[i].classList.toggle('active',secs[i].id==='page-'+page);}
+ var btns=document.querySelectorAll('[data-page]');
+ for(var j=0;j<btns.length;j++){btns[j].classList.toggle('active',btns[j].dataset.page===page);}
+ var titles={
+  home:['今日の生活','仕事も推し活も、自分のペースで。'],
+  work:['事務所の仕事','小さな事務所で、できることをひとつずつ。'],
+  oshi:['推し活','好きな気持ちと、お財布のバランス。'],
+  social:['SNS・界隈','ルールも距離感も、自分で選ぶ。'],
+  history:['行動ログ','これまでの選択が、あなたの物語になる。']
+ };
+ $('pageTitle').textContent=titles[page][0];
+ $('pageSub').textContent=titles[page][1];
+}
+var navBtns=document.querySelectorAll('[data-page]');
+for(var k=0;k<navBtns.length;k++){
+ (function(b){
+  b.addEventListener('click',function(){showPage(b.dataset.page);});
+ })(navBtns[k]);
+}
+function render(){
+ $('moneyTop').textContent=yen(s.money);
+ $('moneyStat').textContent=yen(s.money);
+ var remDays=7-(s.day%7);
+ if(remDays===7)remDays=0;
+ $('moneyHint').textContent='給料日まで '+remDays+'日';
+ $('oshiStat').innerHTML=s.oshi+'<span style="font-size:12px;color:var(--muted)"> / 100</span>';
+ $('trustStat').innerHTML=s.trust+'<span style="font-size:12px;color:var(--muted)"> / 100</span>';
+ $('energyStat').innerHTML=s.energy+'<span style="font-size:12px;color:var(--muted)"> / 100</span>';
+ $('sideDay').textContent=s.day;
+ $('dayChip').textContent='DAY '+s.day;
+ var days=['MONDAY','TUESDAY','WEDNESDAY','THURSDAY','FRIDAY','SATURDAY','SUNDAY'];
+ $('sceneLabel').textContent=days[(s.day-1)%7]+' · '+(s.day%2?'09:10':'18:40');
+ $('workNum').textContent=s.work+' / 100';
+ $('workNum2').textContent=s.work+' / 100';
+ $('oshiNum').textContent=s.oshi+' / 100';
+ $('oshiNum2').textContent=s.oshi+' / 100';
+ $('repNum').textContent=s.rep+' / 100';
+ $('repNum2').textContent=s.rep+' / 100';
+ $('heatNum').textContent=s.heat+' / 100';
+ $('heatNum2').textContent=s.heat+' / 100';
+ var bars=[['workBar',s.work],['workBar2',s.work],['oshiBar',s.oshi],['oshiBar2',s.oshi],['repBar',s.rep],['repBar2',s.rep],['heatBar',s.heat],['heatBar2',s.heat]];
+ for(var m=0;m<bars.length;m++){$(bars[m][0]).style.width=bars[m][1]+'%';}
+ var recent=s.logs.slice(0,3);
+ var html1='';
+ for(var n=0;n<recent.length;n++){
+  html1+='<div class="event"><div class="dot">'+(n===0?'✦':'·')+'</div><div><strong>DAY '+recent[n].day+' · '+recent[n].time+'</strong><p>'+esc(recent[n].text)+'</p></div></div>';
+ }
+ $('recentFeed').innerHTML=html1;
+ var html2='';
+ for(var p=0;p<s.logs.length;p++){
+  html2+='<div class="log-item"><time>DAY '+s.logs[p].day+'<br>'+s.logs[p].time+'</time><p>'+esc(s.logs[p].text)+'</p></div>';
+ }
+ $('logList').innerHTML=html2;
+ $('storyTitle').textContent=s.day<3?'新しい職場、いつもの推し':s.heat>35?'界隈に小さな波紋が広がる':s.money<5000?'お財布の中身が心もとない':s.energy<30?'ちょっと休みたい日':'今日も、仕事と推し活のあいだ';
+ $('storyText').textContent=s.heat>35?'最近の行動が、少しずつ周りに影響している。何を守って、何を選ぶのか。まだ引き返すこともできる。':s.money<5000?'次の給料日まで少しある。推し活に使うか、生活のために残すか。今日は無理せず選んでいい。':s.day<3?'地下アイドル事務所「Lumen Works」で働き始めて、まだ一週間。今日は担当グループの告知を作る日。帰りには、好きなグループのリリースイベント情報も確認したい。':'今日も事務所の仕事と推し活が待っている。小さな選択が、評判や人間関係、明日の予定に少しずつ積み重なっていく。';
+ $('sideName').textContent='あなた · DAY '+s.day;
+}
+function esc(str){return String(str).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+function resetGame(){if(confirm('セーブデータを消して、最初から始めますか？')){s=JSON.parse(JSON.stringify(initial));saveGame();render();showPage('home');toast('新しい人生を始めました')}}
+render();
 </script>
 </body></html>
